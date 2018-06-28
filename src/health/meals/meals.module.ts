@@ -4,6 +4,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
+// components
+import { MealFormComponent } from './components/meal-form/meal-form.component';
+
 // containers
 import { MealsComponent } from './containers/meals/meals.component';
 import { MealComponent } from './containers/meal/meal.component';
@@ -16,7 +19,8 @@ export const ROUTES: Routes = [
 @NgModule({
     declarations: [
         MealsComponent,
-        MealComponent
+        MealComponent,
+        MealFormComponent
     ],
     imports: [
         CommonModule,
