@@ -1,3 +1,4 @@
+import { Meal } from './meals.service';
 import { AuthService } from './../../../../auth/shared/services/auth/auth.service';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Injectable } from '@angular/core';
@@ -28,5 +29,9 @@ export class MealsService {
 
     get uid() {
         return this.authService.user.uid;
+    }
+
+    addMeal(meal: Meal) {
+        return this.db.list(`meals/${this.uid}`).push(meal);
     }
 }
