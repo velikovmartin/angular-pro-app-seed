@@ -1,3 +1,4 @@
+import { Workout } from './health/shared/services/workouts/workouts.service';
 import { Observable } from 'rxjs/Observable';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
@@ -10,11 +11,13 @@ import { Meal } from './health/shared/services/meals/meals.service';
 export interface State {
   user: User,
   meals: Meal[],
+  workouts: Workout[],
   [key: string]: any
 }
 
 const state: State = {
   user: undefined,
+  workouts: undefined,
   meals: undefined
 };
 
