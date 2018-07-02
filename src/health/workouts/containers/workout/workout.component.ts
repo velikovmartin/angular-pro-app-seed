@@ -8,7 +8,7 @@ import 'rxjs/add/operator/switchMap';
 import { WorkoutsService, Workout } from '../../../shared/services/workouts/workouts.service';
 
 @Component({
-  selector: 'workout',
+  selector: 'app-workout',
   styleUrls: ['workout.component.scss'],
   template: `
     <div class="workout">
