@@ -8,12 +8,19 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 // components
 import { ListItemComponent } from "./components/list-item/list-item.component";
 
+// services
 import { MealsService } from './services/meals/meals.service';
 import { WorkoutsService } from './services/workouts/workouts.service';
 
+// pipes
+import { JoinPipe } from './pipes/join.pipe';
+import { WorkoutPipe } from './pipes/workout.pipe';
+
 @NgModule({
     declarations: [
-        ListItemComponent
+        ListItemComponent,
+        JoinPipe,
+        WorkoutPipe
     ],
     imports: [
         CommonModule,
@@ -21,7 +28,9 @@ import { WorkoutsService } from './services/workouts/workouts.service';
         AngularFireDatabaseModule,
     ],
     exports: [
-        ListItemComponent
+        ListItemComponent,
+        JoinPipe,
+        WorkoutPipe
     ]
 })
 
