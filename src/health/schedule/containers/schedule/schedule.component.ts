@@ -10,7 +10,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
     template:`
         <div class="schedule">
             <app-schedule-calendar
-                [date]="date$ | async">
+                [date]="date$ | async"
+                (change)="changeDate($event)">
             </app-schedule-calendar>
 
         </div>
@@ -25,6 +26,10 @@ export class ScheduleComponent implements OnInit, OnDestroy {
         private store: Store,
         private scheduleService: ScheduleService
     ) { }
+
+    changeDate(date: Date) {
+        this.scheduleService.updateDate(date);
+    }
 
     ngOnInit() {
         this.date$ = this.store.select('date');
