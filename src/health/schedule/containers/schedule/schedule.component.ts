@@ -1,16 +1,41 @@
-import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
+import { Store } from 'store';
+import { ScheduleService } from './../../../shared/services/schedule/schedule.service';
+import { Observable } from 'rxjs/Observable';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
 @Component({
     selector: 'app-schedule',
     styleUrls: ['schedule.component.scss'],
     template:`
-        <div>
-            Schedule
+        <div class="schedule">
+            <app-schedule-calendar
+                [date]="date$ | async">
+            </app-schedule-calendar>
+
         </div>
     `
 })
-export class ScheduleComponent implements OnInit {
-    constructor() { }
+export class ScheduleComponent implements OnInit, OnDestroy {
 
-    ngOnInit(): void { }
+    date$: Observable<Date>;
+    subscriptions: Subscription[] = [];
+
+    constructor(
+        private store: Store,
+        private scheduleService: ScheduleService
+    ) { }
+
+    ngOnInit() {
+        this.date$ = this.store.select('date');
+
+        this.subscriptions = [
+            this.scheduleService.schedule$.subscribe(),
+        ];
+    }
+
+    ngOnDestroy() {
+        this.subscriptions.forEach(sub => sub.unsubscribe());
+    }
+
 }
